@@ -16,9 +16,9 @@ export default function App() {
 
   const handleSearch = async (e) => {
     setSearchTerm(e.target.value);
-
+    let q = searchTerm === "" ? null : searchTerm;
     if (searchTerm !== "") {
-      const url = `https://newsapi.org/v2/everything?q=${searchTerm}&apiKey=${API_KEY}`;
+      const url = `https://newsapi.org/v2/everything?q=${q}&apiKey=${API_KEY}`;
       const response = await axios.get(url);
       setArticles(response.data.articles);
     }
@@ -30,7 +30,7 @@ export default function App() {
 
   return (
     <div className="App">
-      <h2>Start searching to see some magic happen!</h2>
+      <h2>Start searching to see some magic happen!🎆</h2>
       <Search searchTerm={searchTerm} handleSearch={handleSearch} />
       <List articles={filterArticles} />
     </div>

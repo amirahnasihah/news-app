@@ -5,7 +5,7 @@ function List({ articles }) {
         <div key={article.url}>
           <h3>{article.title}</h3>
           <a href={article.url} target="_blank" rel="noopener noreferrer">
-            {article.content}
+            {article.description}
           </a>
         </div>
       ))}
