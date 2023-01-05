@@ -3,12 +3,12 @@ import List from "./components/List";
 import Search from "./components/Search";
 import "./App.css";
 import axios from "axios";
+// app === home
 
 export default function App() {
-  const [searchTerm, setSearchTerm] = useState(" ");
+  const [searchTerm, setSearchTerm] = useState("");
   const [articless, setArticles] = useState([]);
   const API_KEY = "6cab899d924340be885932646f30a36c";
-  // const API_KEY = "6cab899d924340be885932646f30a36c";
 
   // const handleSearch = (e) => {
   //   setSearchTerm(e.target.value);
@@ -16,11 +16,19 @@ export default function App() {
 
   const handleSearch = async (e) => {
     setSearchTerm(e.target.value);
-    let q = searchTerm === "" ? null : searchTerm;
-    if (searchTerm !== "") {
-      const url = `https://newsapi.org/v2/everything?q=${q}&apiKey=${API_KEY}`;
+
+    if (searchTerm === "") {
+      setArticles([]);
+      return;
+    }
+
+    try {
+      const url = `https://newsapi.org/v2/everything?q=${searchTerm}&apiKey=${API_KEY}`;
       const response = await axios.get(url);
-      setArticles(response.data.articles);
+      setArticles(response.data.articles || []);
+    } catch (error) {
+      console.error(error);
+      setArticles([]);
     }
   };
 
@@ -32,7 +40,11 @@ export default function App() {
     <div className="App">
       <h2>Start searching to see some magic happen!🎆</h2>
       <Search searchTerm={searchTerm} handleSearch={handleSearch} />
-      <List articles={filterArticles} />
+      {articless.length === 0 ? (
+        <p>No articles found for the given search term.</p>
+      ) : (
+        <List articles={filterArticles} />
+      )}
     </div>
   );
 }

@@ -14,3 +14,5 @@ function List({ articles }) {
 }
 
 export default List;
+
+// list === displayresults

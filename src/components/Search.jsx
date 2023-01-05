@@ -6,3 +6,5 @@ export default function Search({ searchTerm, handleSearch }) {
     </div>
   );
 }
+
+// search === header
