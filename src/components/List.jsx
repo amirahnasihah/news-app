@@ -21,4 +21,4 @@ export default function List({ endpoints }) {
   );
 }
 
-// list === displayresults
+// list === displayresults - what to display or show on browser (title, description etc...)
