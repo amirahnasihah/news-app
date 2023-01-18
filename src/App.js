@@ -41,8 +41,10 @@ export default function App() {
   });
 
   return (
-    <div className="App">
-      <h2>Start searching to see some magic happen!🎆</h2>
+    <div>
+      <h2 class="p-8 mt-5 text-center">
+        Start searching to see some magic happen!🎆
+      </h2>
       <Search searchTerm={searchTerm} handleSearch={handleSearch} />
       {todos.length === 0 ? (
         <p>No movies found for the given search term.</p>
