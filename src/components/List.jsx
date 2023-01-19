@@ -5,12 +5,6 @@ export default function List({ endpoints }) {
       {endpoints.map((e) => (
         <div key={id}>
           <h3>{title}</h3>
-          {/* <a
-            href="https://jsonplaceholder.typicode.com/users/1/todos"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-          </a> */}
           <p>
             {title}
             {completed}
