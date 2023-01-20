@@ -1,7 +1,7 @@
 export default function List({ endpoints }) {
   const { id, title, completed } = endpoints;
   return (
-    <div>
+    <div className="">
       {endpoints.map((e) => (
         <div key={id}>
           <h3>{title}</h3>

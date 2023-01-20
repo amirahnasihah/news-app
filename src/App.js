@@ -29,8 +29,8 @@ export default function App() {
   });
 
   return (
-    <div className="App">
-      <h2 class="p-8 mt-5 text-center ">
+    <div className="App mx-12 backdrop-opacity-10 backdrop-invert bg-white/30 ">
+      <h2 class="p-8 mt-5 text-center  ">
         Start searching to see some magic happen!🎆
       </h2>
       <Search searchTerm={searchTerm} handleSearch={handleSearch} />
