@@ -1,14 +1,12 @@
 export default function List({ endpoints }) {
-  const { id, title, completed } = endpoints;
   return (
-    <div className="">
-      {endpoints.map((e) => (
+    <div className="text-white font-bold text-left px-12 pb-10">
+      {endpoints.map(({ id, author, title }) => (
         <div key={id}>
-          <h3>{title}</h3>
-          <p>
-            {title}
-            {completed}
-          </p>
+          <h3>
+            {id}. {author}
+          </h3>
+          <p>{title}</p>
         </div>
       ))}
     </div>
