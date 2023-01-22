@@ -1,6 +1,6 @@
 export default function List({ endpoints }) {
   return (
-    <div className="text-white font-bold text-left px-12 pb-10">
+    <div className=" font-bold text-left px-12 pb-10">
       {endpoints.map(({ id, author, title }) => (
         <div key={id}>
           <h3>

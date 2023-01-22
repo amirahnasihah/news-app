@@ -1,13 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import List from "./components/List";
 import Search from "./components/Search";
 import "./App.css";
-import { getData } from "./components/getData";
 // import axios from "axios";
 
 export default function App() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [data, setData] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
 
   const books = [
     {
@@ -116,32 +114,40 @@ export default function App() {
     },
   ];
 
-  const handleSearch = async (e) => {
-    setSearchTerm(e.target.value);
+  // function that will handle our search functionality.
+  const handleInput = async (searchValue) => {
+    searchValue.preventDefault();
+    setSearchInput(searchValue.target.value);
+    console.log("searchvalue", searchValue);
 
-    if (searchTerm === "") {
-      // setData([]);
-      return;
+    if (searchInput.length > 0) {
+      books.filter((book) => {
+        return book.title.match(searchInput);
+      });
     }
   };
 
-  // useEffect(() => {
-  //   getData().then((response) => setData(response));
-  // }, []);
+  const searchBtm = (searchTerm) => {
+    console.log("search", searchTerm);
+  };
 
   const filterEndpoints = books.filter((item) => {
     return (
-      item.title.toLowerCase().includes(searchTerm?.toLowerCase() || "") ||
-      item.author.toLowerCase().includes(searchTerm?.toLowerCase() || "")
+      item.title.toLowerCase().includes(searchInput?.toLowerCase() || "") ||
+      item.author.toLowerCase().includes(searchInput?.toLowerCase() || "")
     );
   });
 
   return (
-    <div className="App mx-12 backdrop-opacity-10 backdrop-invert bg-white/30 ">
-      <h2 class="p-8 mt-5 text-center  ">
+    <div className="App mx-12 backdrop-opacity-10 backdrop-invert bg-white/60 ">
+      <h2 className="p-8 mt-5 text-center  ">
         Start searching to see some magic happen!🎆
       </h2>
-      <Search searchTerm={searchTerm} handleSearch={handleSearch} />
+      <Search
+        searchBtm={searchBtm}
+        handleSearch={handleInput}
+        searchInput={searchInput}
+      />
       {books.length === 0 ? (
         <p>No keyword found for the given search term.</p>
       ) : (
