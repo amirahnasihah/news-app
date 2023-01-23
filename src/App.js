@@ -120,14 +120,14 @@ export default function App() {
     setSearchInput(searchValue.target.value);
     console.log("searchvalue", searchValue);
 
-    if (searchInput.length > 0) {
-      books.filter((book) => {
-        return book.title.match(searchInput);
-      });
-    }
+    // if (searchInput.length > 0) {
+    //   books.filter((book) => {
+    //     return book.title.match(searchInput);
+    //   });
+    // }
   };
 
-  const searchBtm = (searchTerm) => {
+  const searchButton = (searchTerm) => {
     console.log("search", searchTerm);
   };
 
@@ -144,8 +144,8 @@ export default function App() {
         Start searching to see some magic happen!🎆
       </h2>
       <Search
-        searchBtm={searchBtm}
-        handleSearch={handleInput}
+        searchBtm={searchButton}
+        handleInput={handleInput}
         searchInput={searchInput}
       />
       {books.length === 0 ? (
