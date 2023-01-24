@@ -6,7 +6,7 @@ export default function List({ endpoints }) {
           <h3>
             {id}. {author}
           </h3>
-          <p>{title}</p>
+          <p> - {title}</p>
         </div>
       ))}
     </div>
